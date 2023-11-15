@@ -1,0 +1,68 @@
+name: bellkat
+
+default-extensions:
+  - DerivingStrategies
+  - TypeFamilies
+  - GeneralizedNewtypeDeriving
+  - FunctionalDependencies
+  - FlexibleInstances
+  - FlexibleContexts
+  - ScopedTypeVariables
+
+ghc-options:
+  - -Wall
+  - -Werror
+  - -fwarn-incomplete-uni-patterns
+  - -fwarn-missing-deriving-strategies
+
+dependencies:
+  - base
+  - containers
+  - more-containers
+  - diagrams-lib
+  - ihaskell-diagrams
+  - diagrams-cairo
+  - QuickCheck
+  - fixed-vector
+  - these
+  - pointed
+  - base-orphans
+  - mtl
+  - smallcheck
+
+library:
+  source-dirs: src
+  exposed-modules:
+    - BellKAT.Drawing
+    - BellKAT.Definitions
+    - BellKAT.PolicyEmbeddings
+    - BellKAT.Definitions.Core
+    - BellKAT.Definitions.Structures
+    - BellKAT.Definitions.Policy
+    - BellKAT.Implementations.OneStepHistoryQuantum
+    - BellKAT.Implementations.TimelyHistoryQuantum
+    - BellKAT.Implementations.StepHistoryQuantum
+    - BellKAT.Implementations.HistoryQuantum
+    - BellKAT.Implementations.AutomataExecution
+    - BellKAT.Implementations.AutomataStepHistoryQuantum
+    - BellKAT.Utils.UnorderedTree
+    - BellKAT.Utils.NonEmpty
+    - BellKAT.Utils.Choice
+    - BellKAT.DSL
+    - BellKAT.Test
+
+tests:
+  spec: 
+    main: Spec
+    source-dirs: 
+      - test
+      - src
+    dependencies: 
+      - hspec
+  small:
+    source-dirs:
+      - test
+      - src
+    dependencies: 
+      - hspec
+    main: SpecSmall
